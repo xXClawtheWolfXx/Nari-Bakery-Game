@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://byuva1uksx7kp"]
+
+[ext_resource type="PackedScene" uid="uid://c6xmgtjv710l4" path="res://Scenes/Stations/station.tscn" id="1_x4o34"]
+[ext_resource type="Script" path="res://Scripts/Cooking/CounterStation.cs" id="2_jhdlw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p0q35"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xrqy"]
+albedo_color = Color(0.402492, 0.402325, 0.948052, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5qop"]
+size = Vector3(2, 2, 2)
+
+[node name="CounterStation" instance=ExtResource("1_x4o34")]
+script = ExtResource("2_jhdlw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_p0q35")
+surface_material_override/0 = SubResource("StandardMaterial3D_4xrqy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_n5qop")

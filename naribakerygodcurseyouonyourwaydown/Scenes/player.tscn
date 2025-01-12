@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://cahxdgifomtlx"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerMovement.cs" id="1_53n16"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_y0eqc"]
+[ext_resource type="Script" path="res://Scripts/RayPickerCamera.cs" id="3_htiej"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m5es5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0sno"]
+albedo_color = Color(0.539578, 0.252887, 0.873376, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_djlbc"]
+size = Vector3(0.66, 0.31, 0.45)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l7m37"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_y0eqc")
+
+[node name="PlayerMovement" type="CharacterBody3D" parent="." node_paths=PackedStringArray("meshRoot", "pitchPivot", "twistPivot")]
+collision_mask = 2
+script = ExtResource("1_53n16")
+meshRoot = NodePath("MeshInstance3D")
+pitchPivot = NodePath("TwistPivot/PitchPivot")
+twistPivot = NodePath("TwistPivot")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerMovement"]
+mesh = SubResource("CapsuleMesh_m5es5")
+surface_material_override/0 = SubResource("StandardMaterial3D_t0sno")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PlayerMovement/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.567361, 0.329578)
+mesh = SubResource("BoxMesh_djlbc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_t0sno")
+
+[node name="Raycasts" type="Node3D" parent="PlayerMovement/MeshInstance3D/MeshInstance3D2"]
+
+[node name="Center" type="RayCast3D" parent="PlayerMovement/MeshInstance3D/MeshInstance3D2/Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.567361, -0.329578)
+target_position = Vector3(0, 0, 4)
+debug_shape_custom_color = Color(1, 0.493423, 0.493423, 1)
+debug_shape_thickness = 4
+
+[node name="Left" type="RayCast3D" parent="PlayerMovement/MeshInstance3D/MeshInstance3D2/Raycasts"]
+transform = Transform3D(0.729375, 0, 0.684114, 0, 1, 0, -0.684114, 0, 0.729375, 0, -0.567361, -0.329578)
+target_position = Vector3(0, 0, 4)
+debug_shape_custom_color = Color(1, 0.493423, 0.493423, 1)
+debug_shape_thickness = 4
+
+[node name="Right" type="RayCast3D" parent="PlayerMovement/MeshInstance3D/MeshInstance3D2/Raycasts"]
+transform = Transform3D(0.728969, 0, -0.684547, 0, 1, 0, 0.684547, 0, 0.728969, 0, -0.567361, -0.329578)
+target_position = Vector3(0, 0, 4)
+debug_shape_custom_color = Color(1, 0.493423, 0.493423, 1)
+debug_shape_thickness = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerMovement"]
+shape = SubResource("CapsuleShape3D_l7m37")
+
+[node name="TwistPivot" type="Node3D" parent="PlayerMovement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="PitchPivot" type="SpringArm3D" parent="PlayerMovement/TwistPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0)
+spring_length = 8.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="PlayerMovement/TwistPivot/PitchPivot" node_paths=PackedStringArray("raycast", "playerMovement", "player")]
+script = ExtResource("3_htiej")
+raycast = NodePath("InFrontRay")
+playerMovement = NodePath("../../..")
+player = NodePath("../../../..")
+
+[node name="InFrontRay" type="RayCast3D" parent="PlayerMovement/TwistPivot/PitchPivot/Camera3D"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 4
