@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cahxdgifomtlx"]
+[gd_scene load_steps=9 format=3 uid="uid://cahxdgifomtlx"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.cs" id="1_53n16"]
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_y0eqc"]
 [ext_resource type="Script" path="res://Scripts/RayPickerCamera.cs" id="3_htiej"]
+[ext_resource type="PackedScene" uid="uid://u42wcf8y6vmd" path="res://Scenes/hands.tscn" id="4_y33l2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m5es5"]
 
@@ -14,12 +15,14 @@ size = Vector3(0.66, 0.31, 0.45)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l7m37"]
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="Node3D" node_paths=PackedStringArray("hands")]
 script = ExtResource("1_y0eqc")
+hands = NodePath("PlayerMovement/MeshInstance3D/MeshInstance3D2/Hands")
 
-[node name="PlayerMovement" type="CharacterBody3D" parent="." node_paths=PackedStringArray("meshRoot", "pitchPivot", "twistPivot")]
+[node name="PlayerMovement" type="CharacterBody3D" parent="." node_paths=PackedStringArray("raycasts", "meshRoot", "pitchPivot", "twistPivot")]
 collision_mask = 2
 script = ExtResource("1_53n16")
+raycasts = [NodePath("MeshInstance3D/MeshInstance3D2/Raycasts/Center")]
 meshRoot = NodePath("MeshInstance3D")
 pitchPivot = NodePath("TwistPivot/PitchPivot")
 twistPivot = NodePath("TwistPivot")
@@ -34,22 +37,13 @@ mesh = SubResource("BoxMesh_djlbc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_t0sno")
 
+[node name="Hands" parent="PlayerMovement/MeshInstance3D/MeshInstance3D2" instance=ExtResource("4_y33l2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.567361, 0.663811)
+
 [node name="Raycasts" type="Node3D" parent="PlayerMovement/MeshInstance3D/MeshInstance3D2"]
 
 [node name="Center" type="RayCast3D" parent="PlayerMovement/MeshInstance3D/MeshInstance3D2/Raycasts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.567361, -0.329578)
-target_position = Vector3(0, 0, 4)
-debug_shape_custom_color = Color(1, 0.493423, 0.493423, 1)
-debug_shape_thickness = 4
-
-[node name="Left" type="RayCast3D" parent="PlayerMovement/MeshInstance3D/MeshInstance3D2/Raycasts"]
-transform = Transform3D(0.729375, 0, 0.684114, 0, 1, 0, -0.684114, 0, 0.729375, 0, -0.567361, -0.329578)
-target_position = Vector3(0, 0, 4)
-debug_shape_custom_color = Color(1, 0.493423, 0.493423, 1)
-debug_shape_thickness = 4
-
-[node name="Right" type="RayCast3D" parent="PlayerMovement/MeshInstance3D/MeshInstance3D2/Raycasts"]
-transform = Transform3D(0.728969, 0, -0.684547, 0, 1, 0, 0.684547, 0, 0.728969, 0, -0.567361, -0.329578)
 target_position = Vector3(0, 0, 4)
 debug_shape_custom_color = Color(1, 0.493423, 0.493423, 1)
 debug_shape_thickness = 4

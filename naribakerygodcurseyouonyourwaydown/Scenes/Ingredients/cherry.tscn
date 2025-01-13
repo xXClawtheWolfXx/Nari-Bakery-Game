@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsan2bmhwa1jc"]
+
+[ext_resource type="Script" path="res://Scripts/Recipies/Ingredient.cs" id="1_8f3da"]
+[ext_resource type="Resource" uid="uid://cnfvab7ojxago" path="res://Resources/Ingredients/Cherry.tres" id="2_mj3ad"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_et6ot"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvjq3"]
+albedo_color = Color(1, 0.204057, 0.373516, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6o340"]
+radius = 0.25
+
+[node name="Cherry" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_8f3da")
+ingredientR = ExtResource("2_mj3ad")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_et6ot")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_tvjq3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6o340")

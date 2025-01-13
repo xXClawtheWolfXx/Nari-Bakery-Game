@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dshhvsbnxgxqb"]
+[gd_scene load_steps=11 format=3 uid="uid://dshhvsbnxgxqb"]
 
 [ext_resource type="PackedScene" uid="uid://cahxdgifomtlx" path="res://Scenes/player.tscn" id="1_1ilh2"]
 [ext_resource type="PackedScene" uid="uid://byuva1uksx7kp" path="res://Scenes/Stations/counter_station.tscn" id="2_8tjun"]
+[ext_resource type="PackedScene" uid="uid://njxlmo2lencc" path="res://Scenes/basket.tscn" id="3_ewhrf"]
+[ext_resource type="PackedScene" uid="uid://dsan2bmhwa1jc" path="res://Scenes/Ingredients/cherry.tscn" id="4_ddrly"]
+[ext_resource type="PackedScene" uid="uid://c18en220q65wo" path="res://Scenes/Ingredients/blackberry.tscn" id="5_1dj4q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u5e4b"]
 sky_top_color = Color(0.180417, 0.712219, 0.961629, 1)
@@ -20,6 +23,9 @@ glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a4yf"]
 albedo_color = Color(0.920897, 0.545653, 0.272703, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnx6h"]
+albedo_color = Color(0.693477, 0.346257, 0.280609, 1)
 
 [node name="Main" type="Node3D"]
 
@@ -44,3 +50,19 @@ size = Vector3(40, 1, 40)
 
 [node name="CounterStation" parent="Env" instance=ExtResource("2_8tjun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, 0)
+
+[node name="Shelf" type="CSGBox3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 3)
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(1.5, 0.3, 3)
+material = SubResource("StandardMaterial3D_wnx6h")
+
+[node name="Basket" parent="Env/Shelf" instance=ExtResource("3_ewhrf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, 0.8)
+ingredientToSpawn = ExtResource("4_ddrly")
+
+[node name="Basket2" parent="Env/Shelf" instance=ExtResource("3_ewhrf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, -0.4)
+ingredientToSpawn = ExtResource("5_1dj4q")
