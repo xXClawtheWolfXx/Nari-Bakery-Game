@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dshhvsbnxgxqb"]
+[gd_scene load_steps=13 format=3 uid="uid://dshhvsbnxgxqb"]
 
 [ext_resource type="PackedScene" uid="uid://cahxdgifomtlx" path="res://Scenes/player.tscn" id="1_1ilh2"]
 [ext_resource type="PackedScene" uid="uid://byuva1uksx7kp" path="res://Scenes/Stations/counter_station.tscn" id="2_8tjun"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dsan2bmhwa1jc" path="res://Scenes/Ingredients/cherry.tscn" id="4_ddrly"]
 [ext_resource type="PackedScene" uid="uid://c18en220q65wo" path="res://Scenes/Ingredients/blackberry.tscn" id="5_1dj4q"]
 [ext_resource type="PackedScene" uid="uid://xkbj8cn12x20" path="res://Scenes/Stations/choppable_station.tscn" id="6_j42ir"]
+[ext_resource type="PackedScene" uid="uid://c2f01uwmw2piu" path="res://Scenes/Stations/oven_station.tscn" id="7_c5sba"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u5e4b"]
 sky_top_color = Color(0.180417, 0.712219, 0.961629, 1)
@@ -70,3 +71,6 @@ ingredientToSpawn = ExtResource("5_1dj4q")
 
 [node name="ChoppableStation" parent="Env" instance=ExtResource("6_j42ir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, -3)
+
+[node name="OvenStation" parent="Env" instance=ExtResource("7_c5sba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -6)
