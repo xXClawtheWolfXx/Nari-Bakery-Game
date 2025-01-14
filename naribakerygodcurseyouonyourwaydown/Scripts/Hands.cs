@@ -4,7 +4,7 @@ using System;
 //Hands is a single-celled inventory whose ingredient exists in the game world
 public partial class Hands : Node3D {
 
-    private Ingredient ingredient = null;
+    private Ingredient ingredient;
 
     //returns whether or not hands is empty
     public bool IsEmpty() {
@@ -15,6 +15,7 @@ public partial class Hands : Node3D {
     public void PickUp(Ingredient ingIn) {
         if (!IsEmpty()) return;
         ingredient = ingIn;
+
         //instantiate
         ingIn.Reparent(this);
         ingIn.GlobalPosition = GlobalPosition;

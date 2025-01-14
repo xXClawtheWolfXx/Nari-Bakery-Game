@@ -3,13 +3,20 @@ using System;
 
 public partial class OvenStation : CounterStation {
 
+    [Export] private Node3D progressUI;
     [Export] private ProgressBar progressBar;
 
     private float currStep = 0;
     private float maxStep = 1;
 
+    public override void _Ready() {
+        progressUI.Visible = false;
+    }
+
     public override void AddIngredient(Ingredient ingredient) {
         base.AddIngredient(ingredient);
+        progressUI.Visible = true;
+
         //spawn ingredient in the world
         ingredient.Reparent(this);
         ingredient.GlobalPosition = ingredientSpawnPosition.GlobalPosition;
@@ -27,6 +34,7 @@ public partial class OvenStation : CounterStation {
 
     public override Ingredient RemoveIngredient() {
         progressBar.Value = 0;
+        progressUI.Visible = false;
         return base.RemoveIngredient();
     }
 

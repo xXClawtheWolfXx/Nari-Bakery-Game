@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="IngredientR" load_steps=2 format=3 uid="uid://da8oc1ygaouwj"]
+[gd_resource type="Resource" script_class="IngredientR" load_steps=3 format=3 uid="uid://da8oc1ygaouwj"]
 
+[ext_resource type="Resource" uid="uid://bh6cpj25obsus" path="res://Resources/Ingredients/BlackberryChopped.tres" id="1_52h8x"]
 [ext_resource type="Script" path="res://Scripts/Recipies/IngredientR.cs" id="1_ktq3g"]
 
 [resource]
 script = ExtResource("1_ktq3g")
-maxSteps = 2.0
+choppedIngredient = ExtResource("1_52h8x")
+maxSteps = 5.0

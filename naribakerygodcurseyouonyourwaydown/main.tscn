@@ -51,10 +51,34 @@ collision_layer = 2
 size = Vector3(40, 1, 40)
 
 [node name="CounterStation" parent="Env" instance=ExtResource("2_8tjun")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 8)
+
+[node name="CounterStation2" parent="Env" instance=ExtResource("2_8tjun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 6.5)
+
+[node name="CounterStation3" parent="Env" instance=ExtResource("2_8tjun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 3.5)
+
+[node name="CounterStation4" parent="Env" instance=ExtResource("2_8tjun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -1)
+
+[node name="CounterStation5" parent="Env" instance=ExtResource("2_8tjun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -4)
+
+[node name="CounterStation6" parent="Env" instance=ExtResource("2_8tjun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -5.5)
+
+[node name="CounterStation7" parent="Env" instance=ExtResource("2_8tjun")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0.5, -5.7)
+
+[node name="CounterStation8" parent="Env" instance=ExtResource("2_8tjun")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 0.5, -5.7)
+
+[node name="CounterStation9" parent="Env" instance=ExtResource("2_8tjun")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0.5, -5.7)
 
 [node name="Shelf" type="CSGBox3D" parent="Env"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 3)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 2.1, 10)
 use_collision = true
 collision_layer = 2
 collision_mask = 5
@@ -69,8 +93,24 @@ ingredientToSpawn = ExtResource("4_ddrly")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, -0.4)
 ingredientToSpawn = ExtResource("5_1dj4q")
 
+[node name="Shelf2" type="CSGBox3D" parent="Env"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0.5, 10)
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(1.5, 0.3, 3)
+material = SubResource("StandardMaterial3D_wnx6h")
+
+[node name="Basket" parent="Env/Shelf2" instance=ExtResource("3_ewhrf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, 0.8)
+ingredientToSpawn = ExtResource("4_ddrly")
+
+[node name="Basket2" parent="Env/Shelf2" instance=ExtResource("3_ewhrf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, -0.4)
+ingredientToSpawn = ExtResource("5_1dj4q")
+
 [node name="ChoppableStation" parent="Env" instance=ExtResource("6_j42ir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 5)
 
 [node name="OvenStation" parent="Env" instance=ExtResource("7_c5sba")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -2.5)

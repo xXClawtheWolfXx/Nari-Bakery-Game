@@ -33,7 +33,7 @@ public partial class PlayerMovement : CharacterBody3D {
 
     public override void _Ready() {
         jumpGravity = fallGravity;
-        pitchPivot.SpringLength = zoom = 8;
+        zoom = pitchPivot.SpringLength;
         speed = normalSpeed;
         pitchPivot.AddExcludedObject(GetRid());
         Input.MouseMode = Input.MouseModeEnum.Captured;
