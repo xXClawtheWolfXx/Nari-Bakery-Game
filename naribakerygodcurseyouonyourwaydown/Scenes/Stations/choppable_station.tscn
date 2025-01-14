@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://xkbj8cn12x20"]
+
+[ext_resource type="PackedScene" uid="uid://c6xmgtjv710l4" path="res://Scenes/Stations/station.tscn" id="1_ls80g"]
+[ext_resource type="Script" path="res://Scripts/Cooking/ChoppableStation.cs" id="2_agrmo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p0q35"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xrqy"]
+albedo_color = Color(0.402492, 0.402325, 0.948052, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5qop"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_cshbj"]
+size = Vector2(1.46, 0.34)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_da3ba"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkghg"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_da3ba")
+billboard_mode = 2
+
+[node name="ChoppableStation" node_paths=PackedStringArray("progressBar", "ingredientSpawnPosition", "mesh") instance=ExtResource("1_ls80g")]
+script = ExtResource("2_agrmo")
+progressBar = NodePath("SubViewport/ProgressBar")
+ingredientSpawnPosition = NodePath("IngredientSpawnPosition")
+mesh = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_p0q35")
+surface_material_override/0 = SubResource("StandardMaterial3D_4xrqy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_n5qop")
+
+[node name="IngredientSpawnPosition" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+
+[node name="ProgressBarUI" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.40073, 0)
+mesh = SubResource("QuadMesh_cshbj")
+surface_material_override/0 = SubResource("StandardMaterial3D_xkghg")
+
+[node name="SubViewport" type="SubViewport" parent="." index="4"]
+gui_disable_input = true
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+max_value = 1.0
+value = 0.11
+show_percentage = false

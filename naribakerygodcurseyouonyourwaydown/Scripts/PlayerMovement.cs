@@ -40,12 +40,19 @@ public partial class PlayerMovement : CharacterBody3D {
     }
 
     public override void _PhysicsProcess(double delta) {
+        /*
         //interaction goes here so we don't have more than one physics process
         foreach (RayCast3D raycast in raycasts)
-            if (Input.IsActionJustPressed("interact") && raycast.IsColliding() && raycast.GetCollider() is IInteractable interactable) {
-                interactable.OnInteract((Node3D)GetParent());
+            if (raycast.IsColliding() && raycast.GetCollider() is IInteractable interactable) {
+                GD.PrintS("efkef");
+                if (Input.IsActionJustPressed("interact"))
+                    interactable.OnInteract((Node3D)GetParent());
+                else if (Input.IsActionJustPressed("altInteract")) {
+                    GD.PrintS("interacting alt");
+                    interactable.OnAltInteract((Node3D)GetParent());
+                }
             }
-
+        */
         Misc();
         vel = Velocity;
 

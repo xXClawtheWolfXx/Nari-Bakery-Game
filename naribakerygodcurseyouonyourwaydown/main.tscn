@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dshhvsbnxgxqb"]
+[gd_scene load_steps=12 format=3 uid="uid://dshhvsbnxgxqb"]
 
 [ext_resource type="PackedScene" uid="uid://cahxdgifomtlx" path="res://Scenes/player.tscn" id="1_1ilh2"]
 [ext_resource type="PackedScene" uid="uid://byuva1uksx7kp" path="res://Scenes/Stations/counter_station.tscn" id="2_8tjun"]
 [ext_resource type="PackedScene" uid="uid://njxlmo2lencc" path="res://Scenes/basket.tscn" id="3_ewhrf"]
 [ext_resource type="PackedScene" uid="uid://dsan2bmhwa1jc" path="res://Scenes/Ingredients/cherry.tscn" id="4_ddrly"]
 [ext_resource type="PackedScene" uid="uid://c18en220q65wo" path="res://Scenes/Ingredients/blackberry.tscn" id="5_1dj4q"]
+[ext_resource type="PackedScene" uid="uid://xkbj8cn12x20" path="res://Scenes/Stations/choppable_station.tscn" id="6_j42ir"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u5e4b"]
 sky_top_color = Color(0.180417, 0.712219, 0.961629, 1)
@@ -66,3 +67,6 @@ ingredientToSpawn = ExtResource("4_ddrly")
 [node name="Basket2" parent="Env/Shelf" instance=ExtResource("3_ewhrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, -0.4)
 ingredientToSpawn = ExtResource("5_1dj4q")
+
+[node name="ChoppableStation" parent="Env" instance=ExtResource("6_j42ir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.6, -3)

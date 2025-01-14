@@ -3,6 +3,7 @@ using System;
 
 public partial class Basket : StaticBody3D, IInteractable {
 
+    [Export] MeshInstance3D mesh;
     [Export] private PackedScene ingredientToSpawn;
 
     public void SpawnIngredient(Player player) {
@@ -17,6 +18,13 @@ public partial class Basket : StaticBody3D, IInteractable {
 
     }
 
+    public void SetMaterial(Material mat) {
+        mesh.SetSurfaceOverrideMaterial(0, mat);
+    }
 
+    public Material GetMaterial() {
+        return mesh.GetActiveMaterial(0);
+    }
 
+    public void OnAltInteract(Node3D body) { }
 }

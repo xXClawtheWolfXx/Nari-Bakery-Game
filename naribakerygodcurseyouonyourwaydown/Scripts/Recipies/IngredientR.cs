@@ -7,6 +7,7 @@ public partial class IngredientR : Resource {
     //[Export] private PackedScene ingredientScene;
     [Export] private float maxSteps;
 
+    public float GetMaxSteps { get => maxSteps; }
     //public PackedScene GetIngredientScene { get => ingredientScene; }
 
     public override bool Equals(object obj) {

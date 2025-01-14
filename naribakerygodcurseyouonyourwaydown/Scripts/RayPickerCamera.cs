@@ -8,6 +8,11 @@ public partial class RayPickerCamera : Camera3D {
     [Export] private PlayerMovement playerMovement;
     [Export] private Player player;
 
+    [Export] private Material whiteMaterial;
+
+    private Material previousMaterial;
+    private IInteractable currInteractable;
+
     public override void _Ready() {
         //so we don't collide with ourself
         raycast.AddExceptionRid(playerMovement.GetRid());
@@ -19,8 +24,20 @@ public partial class RayPickerCamera : Camera3D {
         raycast.ForceRaycastUpdate();
 
         //if colliding with an interactable item, interact
-        if (Input.IsActionJustPressed("interact") && raycast.IsColliding() && raycast.GetCollider() is IInteractable interactable) {
-            interactable.OnInteract(player);
+        if (raycast.IsColliding() && raycast.GetCollider() is IInteractable interactable) {
+            currInteractable?.SetMaterial(previousMaterial);
+            currInteractable = interactable;
+            //bool hover = typeof(IInteractable).IsDefined(typeof(HoverableAttribute), false);
+            previousMaterial = interactable.GetMaterial();
+            interactable.SetMaterial(whiteMaterial);
+
+            if (Input.IsActionJustPressed("interact"))
+                interactable.OnInteract(player);
+            else if (Input.IsActionJustPressed("altInteract")) {
+                interactable.OnAltInteract((Node3D)GetParent());
+            }
+        } else {
+            currInteractable?.SetMaterial(previousMaterial);
         }
 
 
