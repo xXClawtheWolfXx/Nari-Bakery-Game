@@ -9,11 +9,15 @@ public partial class Player : Node3D {
         return hands.IsEmpty();
     }
 
-    public void PickUp(Ingredient ing) {
+    public Item GetItem() {
+        return hands.GetItem();
+    }
+
+    public void PickUp(Item ing) {
         hands.PickUp(ing);
     }
 
-    public Ingredient PutDown(bool canDestroyItem) {
+    public Item PutDown(bool canDestroyItem) {
         return hands.PutDown(canDestroyItem);
     }
 }

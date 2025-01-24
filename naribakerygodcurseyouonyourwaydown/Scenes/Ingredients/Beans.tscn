@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://1tfr2pu8aw7e"]
+
+[ext_resource type="Script" path="res://Scripts/Recipies/Ingredient.cs" id="1_0y5ae"]
+[ext_resource type="Resource" uid="uid://b5ht3jeo7walx" path="res://Resources/Ingredients/Beans.tres" id="2_odfhw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_et6ot"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvjq3"]
+albedo_color = Color(0.306523, 0.0937939, 0.0955526, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6o340"]
+radius = 0.25
+
+[node name="Beans" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_0y5ae")
+ingredientR = ExtResource("2_odfhw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_et6ot")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_tvjq3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6o340")

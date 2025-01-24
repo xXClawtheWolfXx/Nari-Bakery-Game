@@ -6,20 +6,27 @@ public partial class Station : StaticBody3D, IInteractable {
 
     [Export] private MeshInstance3D mesh;
 
-    protected Ingredient ingredientAdded;
+    protected Item itemAdded;
+    protected Ingredient ingAdded;
 
     public bool HasIngredient() {
-        return ingredientAdded is not null;
+        return itemAdded is not null;
+    }
+
+    public virtual void AddIngredient(Item item) {
+        if (HasIngredient()) return;
+        itemAdded = item;
     }
 
     public virtual void AddIngredient(Ingredient ingredient) {
         if (HasIngredient()) return;
-        ingredientAdded = ingredient;
+        itemAdded = ingredient;
+        ingAdded = ingredient;
     }
 
-    public virtual Ingredient RemoveIngredient() {
-        Ingredient ingredientAgain = ingredientAdded;
-        ingredientAdded = null;
+    public virtual Item RemoveIngredient() {
+        Item ingredientAgain = itemAdded;
+        itemAdded = null;
         return ingredientAgain;
     }
 

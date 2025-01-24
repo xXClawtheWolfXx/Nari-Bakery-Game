@@ -1,12 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://dshhvsbnxgxqb"]
+[gd_scene load_steps=18 format=3 uid="uid://dshhvsbnxgxqb"]
 
 [ext_resource type="PackedScene" uid="uid://cahxdgifomtlx" path="res://Scenes/player.tscn" id="1_1ilh2"]
 [ext_resource type="PackedScene" uid="uid://byuva1uksx7kp" path="res://Scenes/Stations/counter_station.tscn" id="2_8tjun"]
 [ext_resource type="PackedScene" uid="uid://njxlmo2lencc" path="res://Scenes/basket.tscn" id="3_ewhrf"]
-[ext_resource type="PackedScene" uid="uid://dsan2bmhwa1jc" path="res://Scenes/Ingredients/cherry.tscn" id="4_ddrly"]
-[ext_resource type="PackedScene" uid="uid://c18en220q65wo" path="res://Scenes/Ingredients/blackberry.tscn" id="5_1dj4q"]
+[ext_resource type="PackedScene" uid="uid://1tfr2pu8aw7e" path="res://Scenes/Ingredients/Beans.tscn" id="4_m8pux"]
+[ext_resource type="PackedScene" uid="uid://c18en220q65wo" path="res://Scenes/Ingredients/Testing/blackberry.tscn" id="5_1dj4q"]
+[ext_resource type="PackedScene" uid="uid://cy4s7sfh448dh" path="res://Scenes/Ingredients/Cilantro.tscn" id="5_yfuqi"]
 [ext_resource type="PackedScene" uid="uid://xkbj8cn12x20" path="res://Scenes/Stations/choppable_station.tscn" id="6_j42ir"]
+[ext_resource type="PackedScene" uid="uid://b5r3gg5jmr4yt" path="res://Scenes/Ingredients/Garlic.tscn" id="6_ou55i"]
 [ext_resource type="PackedScene" uid="uid://c2f01uwmw2piu" path="res://Scenes/Stations/oven_station.tscn" id="7_c5sba"]
+[ext_resource type="PackedScene" uid="uid://by386m7wj45eb" path="res://Scenes/Ingredients/Onion.tscn" id="7_wwvup"]
+[ext_resource type="PackedScene" uid="uid://bupnfbhaxdpyr" path="res://Scenes/Ingredients/Tomato.tscn" id="8_sbut8"]
+[ext_resource type="PackedScene" uid="uid://c1io47grk0bji" path="res://Scenes/Stations/bowl_station.tscn" id="12_2k1pp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u5e4b"]
 sky_top_color = Color(0.180417, 0.712219, 0.961629, 1)
@@ -78,7 +83,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0.5, -5.7)
 
 [node name="Shelf" type="CSGBox3D" parent="Env"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 2.1, 10)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1, 10)
 use_collision = true
 collision_layer = 2
 collision_mask = 5
@@ -87,14 +92,34 @@ material = SubResource("StandardMaterial3D_wnx6h")
 
 [node name="Basket" parent="Env/Shelf" instance=ExtResource("3_ewhrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, 0.8)
-ingredientToSpawn = ExtResource("4_ddrly")
+ingredientToSpawn = ExtResource("4_m8pux")
+ingredientName = "Beans"
 
 [node name="Basket2" parent="Env/Shelf" instance=ExtResource("3_ewhrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, -0.4)
-ingredientToSpawn = ExtResource("5_1dj4q")
+ingredientToSpawn = ExtResource("5_yfuqi")
+ingredientName = "Cilantro"
+
+[node name="Shelf3" type="CSGBox3D" parent="Env"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0999999, 1, 10)
+use_collision = true
+collision_layer = 2
+collision_mask = 5
+size = Vector3(1.5, 0.3, 3)
+material = SubResource("StandardMaterial3D_wnx6h")
+
+[node name="Basket" parent="Env/Shelf3" instance=ExtResource("3_ewhrf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, 0.8)
+ingredientToSpawn = ExtResource("6_ou55i")
+ingredientName = "Garlic"
+
+[node name="Basket2" parent="Env/Shelf3" instance=ExtResource("3_ewhrf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, -0.4)
+ingredientToSpawn = ExtResource("7_wwvup")
+ingredientName = "Onion"
 
 [node name="Shelf2" type="CSGBox3D" parent="Env"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0.5, 10)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0.9, 10)
 use_collision = true
 collision_layer = 2
 collision_mask = 5
@@ -103,7 +128,8 @@ material = SubResource("StandardMaterial3D_wnx6h")
 
 [node name="Basket" parent="Env/Shelf2" instance=ExtResource("3_ewhrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, 0.8)
-ingredientToSpawn = ExtResource("4_ddrly")
+ingredientToSpawn = ExtResource("8_sbut8")
+ingredientName = "Tomato"
 
 [node name="Basket2" parent="Env/Shelf2" instance=ExtResource("3_ewhrf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.6, -0.4)
@@ -114,3 +140,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, 5)
 
 [node name="OvenStation" parent="Env" instance=ExtResource("7_c5sba")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -2.5)
+
+[node name="BowlStation" parent="Env" instance=ExtResource("12_2k1pp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -7)

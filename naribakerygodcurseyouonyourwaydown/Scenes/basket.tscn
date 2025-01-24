@@ -9,11 +9,12 @@ albedo_color = Color(0.47624, 0.161554, 0.10501, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rrrwp"]
 
-[node name="Basket" type="StaticBody3D" node_paths=PackedStringArray("mesh")]
+[node name="Basket" type="StaticBody3D" node_paths=PackedStringArray("mesh", "nameLabel")]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_nvgyw")
 mesh = NodePath("MeshInstance3D")
+nameLabel = NodePath("NameLabel")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_85ctc")
@@ -21,3 +22,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rcy72")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_rrrwp")
+
+[node name="NameLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+pixel_size = 0.008
+billboard = 1
+modulate = Color(0.995572, 0.497786, 0.550387, 1)
+text = "ListenToMe"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="IngredientR" load_steps=3 format=3 uid="uid://ck4yjuq22cbgj"]
+
+[ext_resource type="Resource" uid="uid://djq1aq1puxekd" path="res://Resources/Ingredients/TomatoChopped.tres" id="1_sxm18"]
+[ext_resource type="Script" path="res://Scripts/Recipies/IngredientR.cs" id="1_uudt0"]
+
+[resource]
+script = ExtResource("1_uudt0")
+choppedIngredient = ExtResource("1_sxm18")
+maxSteps = 6.0

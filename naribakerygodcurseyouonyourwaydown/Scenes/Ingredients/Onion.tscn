@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://by386m7wj45eb"]
+
+[ext_resource type="Script" path="res://Scripts/Recipies/Ingredient.cs" id="1_jy6h5"]
+[ext_resource type="Resource" uid="uid://bn22k3jggfoxj" path="res://Resources/Ingredients/Onion.tres" id="2_c8fq6"]
+[ext_resource type="PackedScene" uid="uid://da6uxhy7hldsc" path="res://Scenes/Ingredients/onion_chopped.tscn" id="3_nkpsn"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_et6ot"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvjq3"]
+albedo_color = Color(0.985389, 0.302843, 0.087668, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6o340"]
+radius = 0.25
+
+[node name="Onion" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_jy6h5")
+ingredientR = ExtResource("2_c8fq6")
+choppedScene = ExtResource("3_nkpsn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_et6ot")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_tvjq3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6o340")

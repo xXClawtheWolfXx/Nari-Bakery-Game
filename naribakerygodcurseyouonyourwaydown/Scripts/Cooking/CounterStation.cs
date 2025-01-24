@@ -5,14 +5,15 @@ public partial class CounterStation : Station {
 
     [Export] protected Node3D ingredientSpawnPosition;
 
-    public override void AddIngredient(Ingredient ingredient) {
-        base.AddIngredient(ingredient);
+    public override void AddIngredient(Item item) {
+        base.AddIngredient(item);
         //spawn ingredient in the world
-        ingredient.Reparent(this);
-        ingredient.GlobalPosition = ingredientSpawnPosition.GlobalPosition;
+        item.Reparent(this);
+        item.GlobalPosition = ingredientSpawnPosition.GlobalPosition;
     }
 
-    public override Ingredient RemoveIngredient() {
+
+    public override Item RemoveIngredient() {
         return base.RemoveIngredient();
     }
 

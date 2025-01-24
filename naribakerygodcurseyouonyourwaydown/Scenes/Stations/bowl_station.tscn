@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1io47grk0bji"]
+
+[ext_resource type="PackedScene" uid="uid://c6xmgtjv710l4" path="res://Scenes/Stations/station.tscn" id="1_lymjv"]
+[ext_resource type="Script" path="res://Scripts/Cooking/BowlStation.cs" id="2_427mf"]
+[ext_resource type="PackedScene" uid="uid://b02lpf0lhkq7m" path="res://Scenes/Stations/bowl.tscn" id="3_kk1c6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_y1112"]
+size = Vector3(1.5, 1, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4d4gg"]
+albedo_color = Color(0.713737, 1, 0.816102, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e1o8t"]
+size = Vector3(1.5, 1, 1.5)
+
+[node name="BowlStation" node_paths=PackedStringArray("mesh") instance=ExtResource("1_lymjv")]
+script = ExtResource("2_427mf")
+bowlToSpawn = ExtResource("3_kk1c6")
+mesh = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_y1112")
+surface_material_override/0 = SubResource("StandardMaterial3D_4d4gg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_e1o8t")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c18en220q65wo"]
 
 [ext_resource type="Script" path="res://Scripts/Recipies/Ingredient.cs" id="1_shg0a"]
-[ext_resource type="Resource" uid="uid://da8oc1ygaouwj" path="res://Resources/Ingredients/Blackberry.tres" id="2_sob7n"]
-[ext_resource type="PackedScene" uid="uid://biybra83h83lk" path="res://Scenes/Ingredients/blackberry_chopped.tscn" id="3_f3eaf"]
+[ext_resource type="Resource" uid="uid://da8oc1ygaouwj" path="res://Resources/Ingredients/Testing/Blackberry.tres" id="2_sob7n"]
+[ext_resource type="PackedScene" uid="uid://biybra83h83lk" path="res://Scenes/Ingredients/Testing/blackberry_chopped.tscn" id="3_f3eaf"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_et6ot"]
 radius = 0.25

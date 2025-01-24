@@ -1,22 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dff5o4xayi4ie"]
+[gd_scene load_steps=6 format=3 uid="uid://b7ve84pymav0a"]
 
-[ext_resource type="Script" path="res://Scripts/Recipies/Ingredient.cs" id="1_v83k2"]
-[ext_resource type="Resource" uid="uid://cnfvab7ojxago" path="res://Resources/Ingredients/Cherry.tres" id="2_h2unx"]
+[ext_resource type="Script" path="res://Scripts/Recipies/Ingredient.cs" id="1_fyph5"]
+[ext_resource type="Resource" uid="uid://djq1aq1puxekd" path="res://Resources/Ingredients/TomatoChopped.tres" id="2_adwi8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jlryj"]
 size = Vector3(0.5, 0.1, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvjq3"]
-albedo_color = Color(0.998967, 0.295757, 0.148003, 1)
+albedo_color = Color(1, 0.0100497, 0.0826247, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uc6h8"]
 size = Vector3(0.5, 0.1, 0.5)
 
-[node name="CherryChopped" type="StaticBody3D"]
+[node name="TomatoChopped" type="StaticBody3D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_v83k2")
-ingredientR = ExtResource("2_h2unx")
+script = ExtResource("1_fyph5")
+ingredientR = ExtResource("2_adwi8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_jlryj")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwg7kb58tnr7p"]
+
+[ext_resource type="Script" path="res://Scripts/Recipies/Ingredient.cs" id="1_sqxvb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jlryj"]
+size = Vector3(0.5, 0.1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvjq3"]
+albedo_color = Color(0.135147, 0.622196, 0.291349, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uc6h8"]
+size = Vector3(0.5, 0.1, 0.5)
+
+[node name="CilantroChopped" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_sqxvb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jlryj")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_tvjq3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_uc6h8")

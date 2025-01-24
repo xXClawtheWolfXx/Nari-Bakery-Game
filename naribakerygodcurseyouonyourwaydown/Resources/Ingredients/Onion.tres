@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="IngredientR" load_steps=2 format=3 uid="uid://bn22k3jggfoxj"]
+
+[ext_resource type="Script" path="res://Scripts/Recipies/IngredientR.cs" id="1_kilu7"]
+
+[resource]
+script = ExtResource("1_kilu7")
+maxSteps = 3.0

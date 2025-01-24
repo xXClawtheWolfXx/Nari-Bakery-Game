@@ -21,18 +21,18 @@ public partial class OvenStation : CounterStation {
         ingredient.Reparent(this);
         ingredient.GlobalPosition = ingredientSpawnPosition.GlobalPosition;
         currStep = ingredient.GetCurrProgress;
-        maxStep = ingredientAdded.GetMaxSteps;
+        maxStep = ingAdded.GetMaxSteps();
         progressBar.Value = currStep / maxStep;
     }
 
     public override void _Process(double delta) {
         if (HasIngredient()) {
-            progressBar.Value += delta / maxStep;
-            ingredientAdded.IncreaseCurrProgress((float)delta);
+            progressBar.Value += delta;
+            ingAdded.IncreaseCurrProgress((float)delta);
         }
     }
 
-    public override Ingredient RemoveIngredient() {
+    public override Item RemoveIngredient() {
         progressBar.Value = 0;
         progressUI.Visible = false;
         return base.RemoveIngredient();
@@ -42,8 +42,8 @@ public partial class OvenStation : CounterStation {
         if (body is Player player) {
             if (player.AreHandsEmpty() && HasIngredient())
                 player.PickUp(RemoveIngredient());
-            else if (!player.AreHandsEmpty() && !HasIngredient()) {
-                AddIngredient(player.PutDown(false));
+            else if (!player.AreHandsEmpty() && !HasIngredient() && player.GetItem() is Ingredient) {
+                AddIngredient((Ingredient)player.PutDown(false));
             }
         }
     }

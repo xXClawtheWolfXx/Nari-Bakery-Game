@@ -5,6 +5,12 @@ public partial class Basket : StaticBody3D, IInteractable {
 
     [Export] MeshInstance3D mesh;
     [Export] private PackedScene ingredientToSpawn;
+    [Export] string ingredientName;
+    [Export] Label3D nameLabel;
+
+    public override void _Ready() {
+        nameLabel.Text = ingredientName;
+    }
 
     public void SpawnIngredient(Player player) {
         Ingredient ing = (Ingredient)ingredientToSpawn.Instantiate();
