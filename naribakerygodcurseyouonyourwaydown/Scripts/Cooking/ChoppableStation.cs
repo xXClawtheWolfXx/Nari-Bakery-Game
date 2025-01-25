@@ -7,7 +7,6 @@ public partial class ChoppableStation : CounterStation {
     [Export] private ProgressBar progressBar;
 
     private float currStep = 0;
-    private float maxStep = 1;
     private bool hasSpawned = false;
 
     public override void _Ready() {
@@ -23,7 +22,7 @@ public partial class ChoppableStation : CounterStation {
         ingAdded.Reparent(this);
         ingAdded.GlobalPosition = ingredientSpawnPosition.GlobalPosition;
         currStep = ingAdded.GetCurrProgress;
-        maxStep = ingAdded.GetMaxSteps();
+        maxStep = GetMaxSteps();
         if (maxStep > 0)
             progressBar.Value = currStep / maxStep;
 
@@ -45,7 +44,7 @@ public partial class ChoppableStation : CounterStation {
             AddChild(chopped);
             chopped.GlobalPosition = ingredientSpawnPosition.GlobalPosition;
             currStep = 0;
-            maxStep = chopped.GetMaxSteps();
+            maxStep = GetMaxSteps();
             return;
         }
     }

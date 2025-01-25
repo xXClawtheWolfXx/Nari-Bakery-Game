@@ -8,6 +8,7 @@ public partial class Station : StaticBody3D, IInteractable {
 
     protected Item itemAdded;
     protected Ingredient ingAdded;
+    protected int maxStep;
 
     public bool HasIngredient() {
         return itemAdded is not null;
@@ -28,6 +29,10 @@ public partial class Station : StaticBody3D, IInteractable {
         Item ingredientAgain = itemAdded;
         itemAdded = null;
         return ingredientAgain;
+    }
+
+    protected int GetMaxSteps() {
+        return GD.RandRange(3, 10);
     }
 
     public virtual void ProcessIngredient() {

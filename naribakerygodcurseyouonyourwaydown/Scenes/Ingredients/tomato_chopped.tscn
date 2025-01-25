@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7ve84pymav0a"]
 
 [ext_resource type="Script" path="res://Scripts/Recipies/Ingredient.cs" id="1_fyph5"]
-[ext_resource type="Resource" uid="uid://djq1aq1puxekd" path="res://Resources/Ingredients/TomatoChopped.tres" id="2_adwi8"]
+[ext_resource type="Resource" uid="uid://bwgx7ne5nbhas" path="res://Resources/Ingredients/Tomato.tres" id="2_l2tch"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jlryj"]
 size = Vector3(0.5, 0.1, 0.5)
@@ -16,7 +16,7 @@ size = Vector3(0.5, 0.1, 0.5)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_fyph5")
-ingredientR = ExtResource("2_adwi8")
+ingredientR = ExtResource("2_l2tch")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_jlryj")

@@ -1,15 +1,23 @@
 using Godot;
+using Godot.Collections;
 using System;
+using System.Collections.Generic;
 
-public partial class RecipieR : Node
-{
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+[GlobalClass]
+public partial class RecipieR : Resource {
+
+    [Export] private Array<RecipieStep> recipieSteps = new();
+    [Export] private PackedScene finalDishScene;
+
+    public PackedScene GetFinalDishScene { get => finalDishScene; }
+
+    public bool HasAllIngredients(List<IngredientR> ingredients) {
+        foreach (RecipieStep rs in recipieSteps)
+            if (!ingredients.Contains(rs.GetIngredientR))
+                return false;
+        return true;
+    }
+
+
 }

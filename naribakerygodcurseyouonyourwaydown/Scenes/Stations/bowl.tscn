@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b02lpf0lhkq7m"]
+[gd_scene load_steps=8 format=3 uid="uid://b02lpf0lhkq7m"]
 
 [ext_resource type="Script" path="res://Scripts/Cooking/Bowl.cs" id="1_ak7t6"]
 
@@ -11,11 +11,24 @@ albedo_color = Color(0.208825, 0.0750722, 0.340466, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_tk0po"]
 size = Vector3(1, 0.1, 1)
 
-[node name="Bowl" type="StaticBody3D" node_paths=PackedStringArray("ingredientSpawnPosition", "mesh")]
+[sub_resource type="QuadMesh" id="QuadMesh_3ojdx"]
+size = Vector2(0.92, 0.13)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_da3ba"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tg82r"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_da3ba")
+billboard_mode = 2
+
+[node name="Bowl" type="StaticBody3D" node_paths=PackedStringArray("ingredientSpawnPosition", "mesh", "progressUI", "progressBar")]
 collision_layer = 4
 script = ExtResource("1_ak7t6")
 ingredientSpawnPosition = NodePath("IngredientSpawnPosition")
 mesh = NodePath("MeshInstance3D")
+progressUI = NodePath("ProgressBarUI")
+progressBar = NodePath("SubViewport/ProgressBar")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_pd508")
@@ -26,3 +39,22 @@ shape = SubResource("BoxShape3D_tk0po")
 
 [node name="IngredientSpawnPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="ProgressBarUI" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60073, 0)
+mesh = SubResource("QuadMesh_3ojdx")
+surface_material_override/0 = SubResource("StandardMaterial3D_tg82r")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+gui_disable_input = true
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+max_value = 1.0
+value = 0.11
+show_percentage = false

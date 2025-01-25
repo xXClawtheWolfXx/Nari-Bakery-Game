@@ -14,6 +14,14 @@ public partial class RecipieStep : Resource {
     public IngredientR GetIngredientR { get => ingredientR; }
     public int GetStepDuration { get => stepDuration; }
 
+    public RecipieStep() { }
+
+    public RecipieStep(IngredientR ing, StepType st, int duration) {
+        ingredientR = ing;
+        stepType = st;
+        stepDuration = duration;
+    }
+
     public override bool Equals(object obj) {
         if (obj is not RecipieStep) return false;
         RecipieStep other = (RecipieStep)obj;

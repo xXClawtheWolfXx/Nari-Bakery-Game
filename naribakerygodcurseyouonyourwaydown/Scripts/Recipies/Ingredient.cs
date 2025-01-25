@@ -8,7 +8,7 @@ public partial class Ingredient : Item {
 
     private float currProgress;
 
-
+    public IngredientR GetIngredientR { get => ingredientR; }
     public float GetCurrProgress { get => currProgress; }
     public PackedScene GetChoppedScene { get => choppedScene; }
 

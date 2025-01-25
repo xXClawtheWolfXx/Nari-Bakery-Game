@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwg7kb58tnr7p"]
+[gd_scene load_steps=6 format=3 uid="uid://cwg7kb58tnr7p"]
 
 [ext_resource type="Script" path="res://Scripts/Recipies/Ingredient.cs" id="1_sqxvb"]
+[ext_resource type="Resource" uid="uid://ctdh7lfxlbn4m" path="res://Resources/Ingredients/Cilantro.tres" id="2_b52nb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jlryj"]
 size = Vector3(0.5, 0.1, 0.5)
@@ -15,6 +16,7 @@ size = Vector3(0.5, 0.1, 0.5)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_sqxvb")
+ingredientR = ExtResource("2_b52nb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_jlryj")

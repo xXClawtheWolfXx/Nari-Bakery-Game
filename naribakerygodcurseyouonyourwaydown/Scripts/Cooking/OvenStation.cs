@@ -7,7 +7,6 @@ public partial class OvenStation : CounterStation {
     [Export] private ProgressBar progressBar;
 
     private float currStep = 0;
-    private float maxStep = 1;
 
     public override void _Ready() {
         progressUI.Visible = false;
@@ -21,7 +20,7 @@ public partial class OvenStation : CounterStation {
         ingredient.Reparent(this);
         ingredient.GlobalPosition = ingredientSpawnPosition.GlobalPosition;
         currStep = ingredient.GetCurrProgress;
-        maxStep = ingAdded.GetMaxSteps();
+        maxStep = GetMaxSteps();
         progressBar.Value = currStep / maxStep;
     }
 

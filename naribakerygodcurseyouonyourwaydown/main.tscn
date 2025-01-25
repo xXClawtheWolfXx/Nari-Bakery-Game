@@ -1,6 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dshhvsbnxgxqb"]
+[gd_scene load_steps=20 format=3 uid="uid://dshhvsbnxgxqb"]
 
 [ext_resource type="PackedScene" uid="uid://cahxdgifomtlx" path="res://Scenes/player.tscn" id="1_1ilh2"]
+[ext_resource type="Script" path="res://Scripts/Recipies/CookingManager.cs" id="1_418n8"]
+[ext_resource type="Resource" uid="uid://dmprlcpthoub4" path="res://Resources/Recipies/BeanTomato.tres" id="2_7d4xq"]
 [ext_resource type="PackedScene" uid="uid://byuva1uksx7kp" path="res://Scenes/Stations/counter_station.tscn" id="2_8tjun"]
 [ext_resource type="PackedScene" uid="uid://njxlmo2lencc" path="res://Scenes/basket.tscn" id="3_ewhrf"]
 [ext_resource type="PackedScene" uid="uid://1tfr2pu8aw7e" path="res://Scenes/Ingredients/Beans.tscn" id="4_m8pux"]
@@ -35,6 +37,10 @@ albedo_color = Color(0.920897, 0.545653, 0.272703, 1)
 albedo_color = Color(0.693477, 0.346257, 0.280609, 1)
 
 [node name="Main" type="Node3D"]
+
+[node name="CookingManager" type="Node3D" parent="."]
+script = ExtResource("1_418n8")
+allRecipies = Array[Object]([ExtResource("2_7d4xq")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wpbrx")

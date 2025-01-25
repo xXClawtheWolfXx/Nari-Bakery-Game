@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="RecipieR" load_steps=9 format=3 uid="uid://dmprlcpthoub4"]
+
+[ext_resource type="PackedScene" uid="uid://dwak8fds1b5kr" path="res://Scenes/Ingredients/BeanTomato.tscn" id="1_nappa"]
+[ext_resource type="Script" path="res://Scripts/Recipies/RecipieR.cs" id="1_o6sh7"]
+[ext_resource type="Resource" uid="uid://b5ht3jeo7walx" path="res://Resources/Ingredients/Beans.tres" id="1_xfudf"]
+[ext_resource type="Script" path="res://Scripts/Recipies/RecipieStep.cs" id="2_1eo3l"]
+[ext_resource type="Script" path="res://Scripts/Recipies/IngredientR.cs" id="4_klq3w"]
+
+[sub_resource type="Resource" id="Resource_4yx1t"]
+script = ExtResource("2_1eo3l")
+stepType = 0
+ingredientR = ExtResource("1_xfudf")
+stepDuration = 0
+
+[sub_resource type="Resource" id="Resource_cfe78"]
+script = ExtResource("4_klq3w")
+maxSteps = 6.0
+
+[sub_resource type="Resource" id="Resource_yt0sx"]
+script = ExtResource("2_1eo3l")
+stepType = 0
+ingredientR = SubResource("Resource_cfe78")
+stepDuration = 0
+
+[resource]
+script = ExtResource("1_o6sh7")
+recipieSteps = [SubResource("Resource_4yx1t"), SubResource("Resource_yt0sx")]
+finalDishScene = ExtResource("1_nappa")
