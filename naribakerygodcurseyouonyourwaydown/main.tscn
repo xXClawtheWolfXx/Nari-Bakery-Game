@@ -1,12 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://dshhvsbnxgxqb"]
+[gd_scene load_steps=23 format=3 uid="uid://dshhvsbnxgxqb"]
 
 [ext_resource type="PackedScene" uid="uid://cahxdgifomtlx" path="res://Scenes/player.tscn" id="1_1ilh2"]
 [ext_resource type="Script" path="res://Scripts/Recipies/CookingManager.cs" id="1_418n8"]
 [ext_resource type="Resource" uid="uid://dmprlcpthoub4" path="res://Resources/Recipies/BeanTomato.tres" id="2_7d4xq"]
 [ext_resource type="PackedScene" uid="uid://byuva1uksx7kp" path="res://Scenes/Stations/counter_station.tscn" id="2_8tjun"]
 [ext_resource type="PackedScene" uid="uid://njxlmo2lencc" path="res://Scenes/basket.tscn" id="3_ewhrf"]
+[ext_resource type="Resource" uid="uid://cy1kifbnp0lyv" path="res://Resources/Recipies/Beans.tres" id="3_gy3n8"]
+[ext_resource type="Resource" uid="uid://bcg3x14txcu81" path="res://Resources/Recipies/Herbs.tres" id="4_6bljc"]
 [ext_resource type="PackedScene" uid="uid://1tfr2pu8aw7e" path="res://Scenes/Ingredients/Beans.tscn" id="4_m8pux"]
 [ext_resource type="PackedScene" uid="uid://c18en220q65wo" path="res://Scenes/Ingredients/Testing/blackberry.tscn" id="5_1dj4q"]
+[ext_resource type="Resource" uid="uid://ctgwwawq5lrww" path="res://Resources/Recipies/VegetablesHerbs.tres" id="5_65egy"]
 [ext_resource type="PackedScene" uid="uid://cy4s7sfh448dh" path="res://Scenes/Ingredients/Cilantro.tscn" id="5_yfuqi"]
 [ext_resource type="PackedScene" uid="uid://xkbj8cn12x20" path="res://Scenes/Stations/choppable_station.tscn" id="6_j42ir"]
 [ext_resource type="PackedScene" uid="uid://b5r3gg5jmr4yt" path="res://Scenes/Ingredients/Garlic.tscn" id="6_ou55i"]
@@ -40,7 +43,7 @@ albedo_color = Color(0.693477, 0.346257, 0.280609, 1)
 
 [node name="CookingManager" type="Node3D" parent="."]
 script = ExtResource("1_418n8")
-allRecipies = Array[Object]([ExtResource("2_7d4xq")])
+allRecipies = Array[Object]([ExtResource("2_7d4xq"), ExtResource("3_gy3n8"), ExtResource("4_6bljc"), ExtResource("5_65egy")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wpbrx")
@@ -149,3 +152,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -2.5)
 
 [node name="BowlStation" parent="Env" instance=ExtResource("12_2k1pp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -7)
+bowlToSpawn = null

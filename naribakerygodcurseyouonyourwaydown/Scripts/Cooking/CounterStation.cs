@@ -3,17 +3,16 @@ using System;
 
 public partial class CounterStation : Station {
 
-    [Export] protected Node3D ingredientSpawnPosition;
-
-    public override void AddIngredient(Item item) {
-        base.AddIngredient(item);
+    public override void AddIngredient(Ingredient ingredient) {
+        base.AddIngredient(ingredient);
         //spawn ingredient in the world
-        item.Reparent(this);
-        item.GlobalPosition = ingredientSpawnPosition.GlobalPosition;
+        ingredient.Reparent(this);
+        ingredient.GlobalPosition = ingredientSpawnPosition.GlobalPosition;
+        GD.PrintS(ingredient.GetParent(), ingredient.GlobalPosition, ingredientSpawnPosition.GlobalPosition);
     }
 
 
-    public override Item RemoveIngredient() {
+    public override Ingredient RemoveIngredient() {
         return base.RemoveIngredient();
     }
 
@@ -21,8 +20,9 @@ public partial class CounterStation : Station {
         if (body is Player player) {
             if (player.AreHandsEmpty() && HasIngredient())
                 player.PickUp(RemoveIngredient());
-            else if (!player.AreHandsEmpty() && !HasIngredient()) {
-                AddIngredient(player.PutDown(false));
+            else if (!player.AreHandsEmpty() && !HasIngredient() && player.GetItem() is Ingredient ing) {
+                player.PutDown(false);
+                AddIngredient(ing);
             }
         }
         base.OnInteract(body);

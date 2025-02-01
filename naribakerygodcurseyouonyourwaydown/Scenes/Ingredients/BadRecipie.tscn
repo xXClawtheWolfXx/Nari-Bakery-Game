@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://b807ng81mmxae"]
+
+[ext_resource type="Script" path="res://Scripts/Recipies/Ingredient.cs" id="1_hpj87"]
+[ext_resource type="Resource" uid="uid://bwgx7ne5nbhas" path="res://Resources/Ingredients/Tomato.tres" id="2_7gi01"]
+[ext_resource type="PackedScene" uid="uid://b7ve84pymav0a" path="res://Scenes/Ingredients/tomato_chopped.tscn" id="3_hil1v"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_sje80"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvjq3"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6o340"]
+radius = 0.25
+
+[node name="BadRecipie" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_hpj87")
+ingredientR = ExtResource("2_7gi01")
+choppedScene = ExtResource("3_hil1v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_sje80")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_tvjq3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6o340")

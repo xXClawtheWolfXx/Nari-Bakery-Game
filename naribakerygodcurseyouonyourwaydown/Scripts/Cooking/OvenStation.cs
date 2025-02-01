@@ -1,49 +1,39 @@
 using Godot;
 using System;
 
-public partial class OvenStation : CounterStation {
-
-    [Export] private Node3D progressUI;
-    [Export] private ProgressBar progressBar;
-
-    private float currStep = 0;
-
-    public override void _Ready() {
-        progressUI.Visible = false;
-    }
+public partial class OvenStation : PrepStation {
 
     public override void AddIngredient(Ingredient ingredient) {
+        //if first ingredient is butter, increase score by 50
         base.AddIngredient(ingredient);
-        progressUI.Visible = true;
-
-        //spawn ingredient in the world
-        ingredient.Reparent(this);
-        ingredient.GlobalPosition = ingredientSpawnPosition.GlobalPosition;
-        currStep = ingredient.GetCurrProgress;
-        maxStep = GetMaxSteps();
-        progressBar.Value = currStep / maxStep;
     }
 
     public override void _Process(double delta) {
         if (HasIngredient()) {
-            progressBar.Value += delta;
+            currStep += (float)delta;
+            progressBar.Value = currStep / maxStep;
+
             ingAdded.IncreaseCurrProgress((float)delta);
         }
     }
-
-    public override Item RemoveIngredient() {
-        progressBar.Value = 0;
-        progressUI.Visible = false;
-        return base.RemoveIngredient();
+    public override void ProcessIngredient() {
+        if (currStep > maxStep) {
+            SpawnNewIngredient(ingAdded.GetChoppedScene);
+            ResetProgressUI();
+            return;
+        }
+        GD.Print(currStep);
+        currStep -= 1f;
+        GD.Print(currStep);
+        ingAdded.IncreaseCurrProgress(-1f);
+        progressBar.Value = currStep / maxStep;
     }
 
-    public override void OnInteract(Node3D body) {
-        if (body is Player player) {
-            if (player.AreHandsEmpty() && HasIngredient())
-                player.PickUp(RemoveIngredient());
-            else if (!player.AreHandsEmpty() && !HasIngredient() && player.GetItem() is Ingredient) {
-                AddIngredient((Ingredient)player.PutDown(false));
-            }
-        }
+    protected override int GetMaxSteps() {
+        return GD.RandRange(50, 120);
+    }
+
+    protected override bool CanAcceptIngredient(Player player) {
+        return base.CanAcceptIngredient(player) && player.GetItem().GetCanGoOnTheStove;
     }
 }

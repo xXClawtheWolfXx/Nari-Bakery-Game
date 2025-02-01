@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://xkbj8cn12x20"]
+[gd_scene load_steps=10 format=3 uid="uid://xkbj8cn12x20"]
 
 [ext_resource type="PackedScene" uid="uid://c6xmgtjv710l4" path="res://Scenes/Stations/station.tscn" id="1_ls80g"]
 [ext_resource type="Script" path="res://Scripts/Cooking/ChoppableStation.cs" id="2_agrmo"]
+[ext_resource type="PackedScene" uid="uid://b807ng81mmxae" path="res://Scenes/Ingredients/BadRecipie.tscn" id="3_0m1yl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p0q35"]
 size = Vector3(1.5, 1, 1.5)
@@ -23,12 +24,13 @@ resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_da3ba")
 billboard_mode = 2
 
-[node name="ChoppableStation" node_paths=PackedStringArray("progressUI", "progressBar", "ingredientSpawnPosition", "mesh") instance=ExtResource("1_ls80g")]
+[node name="ChoppableStation" node_paths=PackedStringArray("progressUI", "progressBar", "mesh", "ingredientSpawnPosition") instance=ExtResource("1_ls80g")]
 script = ExtResource("2_agrmo")
+badDish = ExtResource("3_0m1yl")
 progressUI = NodePath("ProgressBarUI")
 progressBar = NodePath("SubViewport/ProgressBar")
-ingredientSpawnPosition = NodePath("IngredientSpawnPosition")
 mesh = NodePath("MeshInstance3D")
+ingredientSpawnPosition = NodePath("IngredientSpawnPosition")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.531142, 0)

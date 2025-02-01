@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://b02lpf0lhkq7m"]
+[gd_scene load_steps=8 format=3 uid="uid://clkeis31f7tq5"]
 
-[ext_resource type="Script" path="res://Scripts/Cooking/Bowl.cs" id="1_ak7t6"]
+[ext_resource type="Script" path="res://Scripts/Cooking/Pan.cs" id="1_e0bmo"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_pd508"]
+[sub_resource type="BoxMesh" id="BoxMesh_o8kab"]
 size = Vector3(1, 0.1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66qch"]
-albedo_color = Color(0.208825, 0.0750722, 0.340466, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1dtu"]
+albedo_color = Color(0.292994, 0.340466, 0.0750722, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tk0po"]
 size = Vector3(1, 0.1, 1)
@@ -14,21 +14,22 @@ size = Vector3(1, 0.1, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_3ojdx"]
 size = Vector2(0.92, 0.13)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jjskx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_da3ba"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tg82r"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_jjskx")
+albedo_texture = SubResource("ViewportTexture_da3ba")
 billboard_mode = 2
 
-[node name="Bowl" type="StaticBody3D"]
+[node name="Pan" type="StaticBody3D" node_paths=PackedStringArray("ingredientSpawnPosition")]
 collision_layer = 4
-script = ExtResource("1_ak7t6")
+script = ExtResource("1_e0bmo")
+ingredientSpawnPosition = NodePath("IngredientSpawnPosition")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_pd508")
-surface_material_override/0 = SubResource("StandardMaterial3D_66qch")
+mesh = SubResource("BoxMesh_o8kab")
+surface_material_override/0 = SubResource("StandardMaterial3D_s1dtu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_tk0po")

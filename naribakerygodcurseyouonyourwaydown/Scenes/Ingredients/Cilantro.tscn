@@ -20,6 +20,7 @@ collision_mask = 2
 script = ExtResource("1_ymm83")
 ingredientR = ExtResource("2_0u3mv")
 choppedScene = ExtResource("3_q7gn2")
+canGoOnTheStove = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_et6ot")

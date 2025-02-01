@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="RecipieR" load_steps=12 format=3 uid="uid://ctgwwawq5lrww"]
+
+[ext_resource type="PackedScene" uid="uid://dwak8fds1b5kr" path="res://Scenes/Ingredients/BeanTomato.tscn" id="1_k5kxs"]
+[ext_resource type="Resource" uid="uid://ctdh7lfxlbn4m" path="res://Resources/Ingredients/Cilantro.tres" id="2_ha12m"]
+[ext_resource type="Script" path="res://Scripts/Recipies/RecipieStep.cs" id="3_glo58"]
+[ext_resource type="Resource" uid="uid://bn22k3jggfoxj" path="res://Resources/Ingredients/Onion.tres" id="4_ew42n"]
+[ext_resource type="Script" path="res://Scripts/Recipies/RecipieR.cs" id="5_1t3hw"]
+[ext_resource type="Resource" uid="uid://b6wkkh043v6tr" path="res://Resources/Ingredients/Garlic.tres" id="5_rri34"]
+[ext_resource type="Resource" uid="uid://bwgx7ne5nbhas" path="res://Resources/Ingredients/Tomato.tres" id="6_xw3tk"]
+
+[sub_resource type="Resource" id="Resource_4yx1t"]
+script = ExtResource("3_glo58")
+stepType = 0
+ingredientR = ExtResource("2_ha12m")
+stepDuration = 0
+
+[sub_resource type="Resource" id="Resource_yt0sx"]
+script = ExtResource("3_glo58")
+stepType = 0
+ingredientR = ExtResource("4_ew42n")
+stepDuration = 0
+
+[sub_resource type="Resource" id="Resource_qx82t"]
+script = ExtResource("3_glo58")
+stepType = 0
+ingredientR = ExtResource("5_rri34")
+stepDuration = 0
+
+[sub_resource type="Resource" id="Resource_vrq2p"]
+script = ExtResource("3_glo58")
+stepType = 0
+ingredientR = ExtResource("6_xw3tk")
+stepDuration = 0
+
+[resource]
+script = ExtResource("5_1t3hw")
+recipieSteps = [SubResource("Resource_4yx1t"), SubResource("Resource_yt0sx"), SubResource("Resource_qx82t"), SubResource("Resource_vrq2p")]
+finalDishScene = ExtResource("1_k5kxs")
