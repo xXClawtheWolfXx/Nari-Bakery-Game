@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://b4aygsk66gukb"]
+
+[resource]
+default_font_size = 47
+CheckBox/colors/font_color = Color(0.673111, 0.197114, 0.197114, 1)
+Label/colors/font_color = Color(0.988783, 0.455375, 0.455375, 1)

@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Diagnostics;
 
-public partial class Station : StaticBody3D, IInteractable {
+public abstract partial class Station : StaticBody3D, IInteractable {
 
     [Export] private MeshInstance3D mesh;
     [Export] protected Node3D ingredientSpawnPosition;
@@ -33,10 +33,10 @@ public partial class Station : StaticBody3D, IInteractable {
 
 
     public virtual void OnInteract(Node3D body) {
-        GD.PrintS(body, "interacting with", Name);
+        GD.PrintS(body.Name, "interacting with", Name);
     }
     public virtual void OnAltInteract(Node3D body) {
-        GD.PrintS(body, "interacting alt with", Name);
+        GD.PrintS(body.Name, "interacting alt with", Name);
     }
     public void SetMaterial(Material mat) {
         mesh.SetSurfaceOverrideMaterial(0, mat);

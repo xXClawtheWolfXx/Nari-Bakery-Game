@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="IngredientR" load_steps=2 format=3 uid="uid://ctdh7lfxlbn4m"]
+[gd_resource type="Resource" script_class="IngredientR" load_steps=3 format=3 uid="uid://ctdh7lfxlbn4m"]
 
+[ext_resource type="Texture2D" uid="uid://b3idu3clfvpoh" path="res://Assets/Sprites/CilantroSprite.png" id="1_70ne4"]
 [ext_resource type="Script" path="res://Scripts/Recipies/IngredientR.cs" id="1_inioi"]
 
 [resource]
 script = ExtResource("1_inioi")
 maxSteps = 5.0
+IngredientSprite = ExtResource("1_70ne4")

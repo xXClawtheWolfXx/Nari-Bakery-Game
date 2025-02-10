@@ -1,6 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b02lpf0lhkq7m"]
-
-[ext_resource type="Script" path="res://Scripts/Cooking/Bowl.cs" id="1_ak7t6"]
+[gd_scene load_steps=7 format=3 uid="uid://b02lpf0lhkq7m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pd508"]
 size = Vector3(1, 0.1, 1)
@@ -24,7 +22,6 @@ billboard_mode = 2
 
 [node name="Bowl" type="StaticBody3D"]
 collision_layer = 4
-script = ExtResource("1_ak7t6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_pd508")

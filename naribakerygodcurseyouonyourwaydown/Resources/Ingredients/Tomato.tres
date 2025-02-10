@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="IngredientR" load_steps=2 format=3 uid="uid://bwgx7ne5nbhas"]
+[gd_resource type="Resource" script_class="IngredientR" load_steps=3 format=3 uid="uid://bwgx7ne5nbhas"]
 
+[ext_resource type="Texture2D" uid="uid://1lcda7dkp3yr" path="res://Assets/Sprites/tomatoSprite.png" id="1_5oeyd"]
 [ext_resource type="Script" path="res://Scripts/Recipies/IngredientR.cs" id="1_uudt0"]
 
 [resource]
 script = ExtResource("1_uudt0")
 maxSteps = 6.0
+IngredientSprite = ExtResource("1_5oeyd")

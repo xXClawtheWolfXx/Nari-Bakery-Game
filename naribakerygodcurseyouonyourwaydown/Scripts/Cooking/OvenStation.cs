@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class OvenStation : PrepStation {
+public partial class OvenStation : MixStation {
 
     public override void AddIngredient(Ingredient ingredient) {
         //if first ingredient is butter, increase score by 50
@@ -12,28 +12,28 @@ public partial class OvenStation : PrepStation {
         if (HasIngredient()) {
             currStep += (float)delta;
             progressBar.Value = currStep / maxStep;
-
             ingAdded.IncreaseCurrProgress((float)delta);
+            FinishIngredient();
         }
     }
+
     public override void ProcessIngredient() {
-        if (currStep > maxStep) {
-            SpawnNewIngredient(ingAdded.GetChoppedScene);
-            ResetProgressUI();
-            return;
-        }
+        base.ProcessIngredient();
+
         GD.Print(currStep);
-        currStep -= 1f;
+        currStep += 10f;
         GD.Print(currStep);
-        ingAdded.IncreaseCurrProgress(-1f);
+        ingAdded.IncreaseCurrProgress(10f);
         progressBar.Value = currStep / maxStep;
+        FinishIngredient();
     }
 
     protected override int GetMaxSteps() {
         return GD.RandRange(50, 120);
     }
-
-    protected override bool CanAcceptIngredient(Player player) {
-        return base.CanAcceptIngredient(player) && player.GetItem().GetCanGoOnTheStove;
-    }
+    /*
+        protected override bool CanAcceptIngredient(Player player) {
+            return base.CanAcceptIngredient(player) && player.GetItem().GetCanGoOnTheStove;
+        }
+    */
 }

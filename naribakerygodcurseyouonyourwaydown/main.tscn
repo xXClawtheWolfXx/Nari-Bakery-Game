@@ -152,4 +152,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -2.5)
 
 [node name="BowlStation" parent="Env" instance=ExtResource("12_2k1pp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -7)
-bowlToSpawn = null
+badDish = null
