@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2f01uwmw2piu"]
+[gd_scene load_steps=10 format=3 uid="uid://c2f01uwmw2piu"]
 
 [ext_resource type="PackedScene" uid="uid://c6xmgtjv710l4" path="res://Scenes/Stations/station.tscn" id="1_yuj38"]
 [ext_resource type="Script" path="res://Scripts/Cooking/OvenStation.cs" id="2_k2lq8"]
+[ext_resource type="PackedScene" uid="uid://b807ng81mmxae" path="res://Scenes/Ingredients/BadRecipie.tscn" id="3_yik6r"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p0q35"]
 size = Vector3(1.5, 1, 1.5)
@@ -25,6 +26,7 @@ billboard_mode = 2
 
 [node name="OvenStation" node_paths=PackedStringArray("progressUI", "progressBar", "mesh", "ingredientSpawnPosition") instance=ExtResource("1_yuj38")]
 script = ExtResource("2_k2lq8")
+badDish = ExtResource("3_yik6r")
 progressUI = NodePath("ProgressBarUI")
 progressBar = NodePath("SubViewport/ProgressBar")
 mesh = NodePath("MeshInstance3D")

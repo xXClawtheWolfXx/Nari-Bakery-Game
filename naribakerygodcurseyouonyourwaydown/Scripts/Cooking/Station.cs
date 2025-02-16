@@ -32,12 +32,9 @@ public abstract partial class Station : StaticBody3D, IInteractable {
     public virtual void ProcessIngredient() { }
 
 
-    public virtual void OnInteract(Node3D body) {
-        GD.PrintS(body.Name, "interacting with", Name);
-    }
-    public virtual void OnAltInteract(Node3D body) {
-        GD.PrintS(body.Name, "interacting alt with", Name);
-    }
+    public virtual void OnInteract(Node3D body) { }
+    public virtual void OnAltInteract(Node3D body) { }
+
     public void SetMaterial(Material mat) {
         mesh.SetSurfaceOverrideMaterial(0, mat);
     }

@@ -28,7 +28,6 @@ public partial class CookingManager : Node3D {
             int randNum = GD.RandRange(0, allRecipies.Count - 1);
             if (!randRecipies.Contains(allRecipies[randNum])) {
                 randRecipies.Add(allRecipies[randNum]);
-                GD.PrintS(allRecipies[randNum].GetRecipieName);
             }
         }
 

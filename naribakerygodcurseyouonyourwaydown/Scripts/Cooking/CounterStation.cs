@@ -8,7 +8,6 @@ public partial class CounterStation : Station {
         //spawn ingredient in the world
         ingredient.Reparent(this);
         ingredient.GlobalPosition = ingredientSpawnPosition.GlobalPosition;
-        GD.PrintS(ingredient.GetParent(), ingredient.GlobalPosition, ingredientSpawnPosition.GlobalPosition);
     }
 
 

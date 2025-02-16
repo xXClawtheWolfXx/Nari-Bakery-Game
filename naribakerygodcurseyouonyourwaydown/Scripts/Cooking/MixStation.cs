@@ -23,9 +23,11 @@ public abstract partial class MixStation : PrepStation {
     }
 
     protected void FinishIngredient() {
-        if (currStep >= maxStep && spawnedIngredients.Count > 1) {
-            ResetProgressUI();
+        if (currStep >= maxStep) {
+            currStep = -10;
             SpawnFinalDish();
+            ResetProgressUI();
+
         }
     }
 
@@ -36,7 +38,7 @@ public abstract partial class MixStation : PrepStation {
     }
 
     protected RecipieR FindBestRecipie() {
-        foreach (RecipieR recipieR in CookingManager.Instance.GetAllRecipies) {
+        foreach (RecipieR recipieR in Globals.Instance.CookingManager.GetAllRecipies) {
             if (recipieR.HasAllIngredients(ingredientRs)) {
                 return recipieR;
             }
@@ -51,7 +53,6 @@ public abstract partial class MixStation : PrepStation {
         PackedScene finalDish = badDish;
         if (currRecipie is not null)
             finalDish = currRecipie.GetFinalDishScene;
-
         spawnedIngredients.Add(SpawnNewIngredient(finalDish));
         finalDishSpawned = true;
     }
@@ -65,7 +66,6 @@ public abstract partial class MixStation : PrepStation {
     }
 
     protected override bool CanAcceptIngredient(Player player) {
-        GD.PrintS("hands not empty", !player.AreHandsEmpty(), "item is ing:", player.GetItem() is Ingredient, !player.AreHandsEmpty() && player.GetItem() is Ingredient);
         return !player.AreHandsEmpty() && player.GetItem() is Ingredient;
     }
 

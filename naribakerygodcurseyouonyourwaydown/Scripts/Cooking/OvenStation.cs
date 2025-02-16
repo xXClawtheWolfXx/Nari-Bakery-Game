@@ -31,9 +31,5 @@ public partial class OvenStation : MixStation {
     protected override int GetMaxSteps() {
         return GD.RandRange(50, 120);
     }
-    /*
-        protected override bool CanAcceptIngredient(Player player) {
-            return base.CanAcceptIngredient(player) && player.GetItem().GetCanGoOnTheStove;
-        }
-    */
+
 }

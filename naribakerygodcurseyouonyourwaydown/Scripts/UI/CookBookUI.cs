@@ -15,7 +15,6 @@ public partial class CookBookUI : Control {
 
     private void HandleCookingRecipiesChosen(List<RecipieR> recipies) {
         //fill in label information
-        GD.PrintS("Recipie count", recipies.Count);
         for (int i = 0; i < recipieBlockLabels.Count; i++) {
 
             if (i >= recipies.Count) {

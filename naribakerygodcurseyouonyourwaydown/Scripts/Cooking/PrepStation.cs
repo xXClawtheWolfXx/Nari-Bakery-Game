@@ -32,16 +32,17 @@ public abstract partial class PrepStation : CounterStation {
     }
 
     public override Ingredient RemoveIngredient() {
-        GD.PrintS("Remocing ingredient");
         ResetProgressUI();
         return base.RemoveIngredient();
     }
 
     protected void ResetProgressUI(bool isOn = false, float step = 0) {
-        if (currStep > 0) return;
+        GD.PrintS("curr step", currStep, "step", step, isOn);
         currStep = step;
-        maxStep = GetMaxSteps();
-        progressBar.Value = step / maxStep;
+        if (step == 0) {
+            maxStep = GetMaxSteps();
+            progressBar.Value = step / maxStep;
+        }
         progressUI.Visible = isOn;
     }
 
