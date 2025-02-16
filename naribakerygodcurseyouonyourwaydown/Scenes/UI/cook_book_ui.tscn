@@ -1,0 +1,137 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvdhgbxh7pjoq"]
+
+[ext_resource type="Script" path="res://Scripts/UI/CookBookUI.cs" id="1_00jj0"]
+[ext_resource type="Theme" uid="uid://b4aygsk66gukb" path="res://Assets/UITheme.tres" id="1_idql5"]
+
+[node name="CookBookUI" type="Control" node_paths=PackedStringArray("recipieBlockLabels")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_00jj0")
+recipieBlockLabels = [NodePath("PanelContainer/VBoxContainer/RecipieBlock/1Label"), NodePath("PanelContainer/VBoxContainer/RecipieBlock2/2Label"), NodePath("PanelContainer/VBoxContainer/RecipieBlock3/3Label"), NodePath("PanelContainer/VBoxContainer/RecipieBlock4/4Label"), NodePath("PanelContainer/VBoxContainer/RecipieBlock5/5Label")]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -569.5
+offset_top = -440.5
+offset_right = 569.5
+offset_bottom = 440.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 490
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 420
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "Recipies"
+horizontal_alignment = 1
+
+[node name="XButton" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "  X  "
+
+[node name="RecipieBlock" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 180
+alignment = 1
+
+[node name="1Label" type="Label" parent="PanelContainer/VBoxContainer/RecipieBlock"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "Recipies"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/RecipieBlock"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "Learn Recipie"
+
+[node name="RecipieBlock2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 180
+alignment = 1
+
+[node name="2Label" type="Label" parent="PanelContainer/VBoxContainer/RecipieBlock2"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "Recipies"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/RecipieBlock2"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "Learn Recipie"
+
+[node name="RecipieBlock3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 180
+alignment = 1
+
+[node name="3Label" type="Label" parent="PanelContainer/VBoxContainer/RecipieBlock3"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "Recipies"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/RecipieBlock3"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "Learn Recipie"
+
+[node name="RecipieBlock4" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 180
+alignment = 1
+
+[node name="4Label" type="Label" parent="PanelContainer/VBoxContainer/RecipieBlock4"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "Recipies"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/RecipieBlock4"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "Learn Recipie"
+
+[node name="RecipieBlock5" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 180
+alignment = 1
+
+[node name="5Label" type="Label" parent="PanelContainer/VBoxContainer/RecipieBlock5"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "Recipies"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/RecipieBlock5"]
+layout_mode = 2
+theme = ExtResource("1_idql5")
+text = "Learn Recipie"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/XButton" to="." method="HandleXButtonPressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/RecipieBlock/Button" to="." method="HandleRecipieButtonPressed" binds= [0]]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/RecipieBlock2/Button" to="." method="HandleRecipieButtonPressed" binds= [1]]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/RecipieBlock3/Button" to="." method="HandleRecipieButtonPressed" binds= [2]]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/RecipieBlock4/Button" to="." method="HandleRecipieButtonPressed" binds= [3]]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/RecipieBlock5/Button" to="." method="HandleRecipieButtonPressed" binds= [4]]

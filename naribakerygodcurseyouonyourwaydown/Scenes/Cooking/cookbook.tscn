@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1xql0aw50brb"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Cookbook.cs" id="1_ysaaq"]
+[ext_resource type="PackedScene" uid="uid://bvdhgbxh7pjoq" path="res://Scenes/UI/cook_book_ui.tscn" id="2_eyfyp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vpe4u"]
+size = Vector3(1, 0.42, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u5mai"]
+size = Vector3(1, 0.42, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g683p"]
+albedo_color = Color(0.176486, 0.303129, 0.176484, 1)
+
+[node name="Cookbook" type="StaticBody3D" node_paths=PackedStringArray("mesh", "cookbookUI")]
+collision_layer = 6
+collision_mask = 0
+script = ExtResource("1_ysaaq")
+mesh = NodePath("MeshInstance3D")
+cookbookUI = NodePath("CookBookUI")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vpe4u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_u5mai")
+surface_material_override/0 = SubResource("StandardMaterial3D_g683p")
+
+[node name="CookBookUI" parent="." instance=ExtResource("2_eyfyp")]
+visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dshhvsbnxgxqb"]
+[gd_scene load_steps=24 format=3 uid="uid://dshhvsbnxgxqb"]
 
 [ext_resource type="PackedScene" uid="uid://cahxdgifomtlx" path="res://Scenes/player.tscn" id="1_1ilh2"]
 [ext_resource type="Script" path="res://Scripts/Recipies/CookingManager.cs" id="1_418n8"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://by386m7wj45eb" path="res://Scenes/Ingredients/Onion.tscn" id="7_wwvup"]
 [ext_resource type="PackedScene" uid="uid://bupnfbhaxdpyr" path="res://Scenes/Ingredients/Tomato.tscn" id="8_sbut8"]
 [ext_resource type="PackedScene" uid="uid://c1io47grk0bji" path="res://Scenes/Stations/bowl_station.tscn" id="12_2k1pp"]
+[ext_resource type="PackedScene" uid="uid://b1xql0aw50brb" path="res://Scenes/Cooking/cookbook.tscn" id="13_vp0ed"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u5e4b"]
 sky_top_color = Color(0.180417, 0.712219, 0.961629, 1)
@@ -40,10 +41,6 @@ albedo_color = Color(0.920897, 0.545653, 0.272703, 1)
 albedo_color = Color(0.693477, 0.346257, 0.280609, 1)
 
 [node name="Main" type="Node3D"]
-
-[node name="CookingManager" type="Node3D" parent="."]
-script = ExtResource("1_418n8")
-allRecipies = Array[Object]([ExtResource("2_7d4xq"), ExtResource("3_gy3n8"), ExtResource("4_6bljc"), ExtResource("5_65egy")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wpbrx")
@@ -153,3 +150,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -2.5)
 [node name="BowlStation" parent="Env" instance=ExtResource("12_2k1pp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.5, -7)
 badDish = null
+
+[node name="Cookbook" parent="Env" instance=ExtResource("13_vp0ed")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -9.6, 1.7, 8.4)
+
+[node name="CookingManager" type="Node3D" parent="."]
+script = ExtResource("1_418n8")
+allRecipies = Array[Object]([ExtResource("2_7d4xq"), ExtResource("3_gy3n8"), ExtResource("4_6bljc"), ExtResource("5_65egy")])
+maxNumRecipies = 3

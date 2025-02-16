@@ -27,5 +27,6 @@ stepDuration = 0
 
 [resource]
 script = ExtResource("7_1k3yg")
+recipieName = "Herbs"
 recipieSteps = [SubResource("Resource_4yx1t"), SubResource("Resource_yt0sx"), SubResource("Resource_qx82t")]
 finalDishScene = ExtResource("1_pvlsw")
