@@ -37,7 +37,6 @@ public abstract partial class PrepStation : CounterStation {
     }
 
     protected void ResetProgressUI(bool isOn = false, float step = 0) {
-        GD.PrintS("curr step", currStep, "step", step, isOn);
         currStep = step;
         if (step == 0) {
             maxStep = GetMaxSteps();

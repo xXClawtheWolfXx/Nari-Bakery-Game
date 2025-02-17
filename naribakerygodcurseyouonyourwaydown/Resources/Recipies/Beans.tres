@@ -19,6 +19,7 @@ stepDuration = 0
 
 [resource]
 script = ExtResource("6_my4a0")
-recipieName = "Beans"
+IsMixRecipie = false
+RecipieName = "Beans"
+FinalDishScene = ExtResource("1_vh5og")
 recipieSteps = [SubResource("Resource_4yx1t"), SubResource("Resource_s11fr")]
-finalDishScene = ExtResource("1_vh5og")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2f01uwmw2piu"]
+[gd_scene load_steps=12 format=3 uid="uid://c2f01uwmw2piu"]
 
 [ext_resource type="PackedScene" uid="uid://c6xmgtjv710l4" path="res://Scenes/Stations/station.tscn" id="1_yuj38"]
 [ext_resource type="Script" path="res://Scripts/Cooking/OvenStation.cs" id="2_k2lq8"]
 [ext_resource type="PackedScene" uid="uid://b807ng81mmxae" path="res://Scenes/Ingredients/BadRecipie.tscn" id="3_yik6r"]
+[ext_resource type="PackedScene" uid="uid://b7t1u5t7jo4ak" path="res://Scenes/UI/cookTutorialUI.tscn" id="4_q74jr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p0q35"]
 size = Vector3(1.5, 1, 1.5)
@@ -17,18 +18,21 @@ size = Vector3(1.5, 1, 1.5)
 size = Vector2(1.46, 0.34)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_da3ba"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("SubViewportCT")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkghg"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_da3ba")
 billboard_mode = 2
 
+[sub_resource type="QuadMesh" id="QuadMesh_gh8rd"]
+size = Vector2(1.4, 1.4)
+
 [node name="OvenStation" node_paths=PackedStringArray("progressUI", "progressBar", "mesh", "ingredientSpawnPosition") instance=ExtResource("1_yuj38")]
 script = ExtResource("2_k2lq8")
 badDish = ExtResource("3_yik6r")
 progressUI = NodePath("ProgressBarUI")
-progressBar = NodePath("SubViewport/ProgressBar")
+progressBar = NodePath("SubViewportPB/ProgressBar")
 mesh = NodePath("MeshInstance3D")
 ingredientSpawnPosition = NodePath("IngredientSpawnPosition")
 
@@ -46,13 +50,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
 [node name="ProgressBarUI" type="MeshInstance3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40073, 0)
+visible = false
 mesh = SubResource("QuadMesh_cshbj")
 surface_material_override/0 = SubResource("StandardMaterial3D_xkghg")
 
-[node name="SubViewport" type="SubViewport" parent="." index="4"]
+[node name="CookTutorialUI" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40073, 0)
+mesh = SubResource("QuadMesh_gh8rd")
+surface_material_override/0 = SubResource("StandardMaterial3D_xkghg")
+
+[node name="SubViewportPB" type="SubViewport" parent="." index="5"]
 gui_disable_input = true
 
-[node name="ProgressBar" type="ProgressBar" parent="SubViewport" index="0"]
+[node name="ProgressBar" type="ProgressBar" parent="SubViewportPB" index="0"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -62,3 +72,9 @@ size_flags_vertical = 1
 max_value = 1.0
 value = 0.11
 show_percentage = false
+
+[node name="SubViewportCT" type="SubViewport" parent="." index="6"]
+gui_disable_input = true
+size = Vector2i(322, 368)
+
+[node name="CookTutorialUI" parent="SubViewportCT" index="0" instance=ExtResource("4_q74jr")]

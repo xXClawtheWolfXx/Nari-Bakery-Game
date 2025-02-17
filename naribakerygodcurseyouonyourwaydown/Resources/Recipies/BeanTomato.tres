@@ -24,6 +24,7 @@ stepDuration = 0
 
 [resource]
 script = ExtResource("1_o6sh7")
-recipieName = "BeanTomato"
+IsMixRecipie = false
+RecipieName = "BeanTomato"
+FinalDishScene = ExtResource("1_nappa")
 recipieSteps = [SubResource("Resource_4yx1t"), SubResource("Resource_yt0sx")]
-finalDishScene = ExtResource("1_nappa")

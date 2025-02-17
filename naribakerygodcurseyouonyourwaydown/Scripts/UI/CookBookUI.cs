@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public partial class CookBookUI : Control {
 
     [Export] private Array<Label> recipieBlockLabels;
+    [Export] private Control cookTutorialUI;
 
     private List<RecipieR> recipies;
 
@@ -21,13 +22,17 @@ public partial class CookBookUI : Control {
                 ((Control)recipieBlockLabels[i].GetParent()).Visible = false;
                 continue;
             }
-            recipieBlockLabels[i].Text = recipies[i].GetRecipieName;
+            recipieBlockLabels[i].Text = recipies[i].RecipieName;
         }
     }
 
     public void HandleRecipieButtonPressed(int buttonNum) {
         //make UI appear and follow directions
         GD.PrintS("Button", buttonNum, "works");
+        if (recipies[buttonNum].IsMixRecipie) {
+
+        }
+
     }
 
     public void HandleXButtonPressed() {

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class UICooking : Control {
+public partial class CookTutorialUI : Control {
     [Export] private Label orderLabel;
     [Export] private TextureRect ingredientImage;
 

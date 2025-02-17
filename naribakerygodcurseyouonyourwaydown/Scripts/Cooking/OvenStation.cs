@@ -20,12 +20,15 @@ public partial class OvenStation : MixStation {
     public override void ProcessIngredient() {
         base.ProcessIngredient();
 
-        GD.Print(currStep);
         currStep += 10f;
-        GD.Print(currStep);
+
         ingAdded.IncreaseCurrProgress(10f);
         progressBar.Value = currStep / maxStep;
         FinishIngredient();
+    }
+
+    protected override bool CanSpawnDish(RecipieR recipie) {
+        return !recipie.IsMixRecipie;
     }
 
     protected override int GetMaxSteps() {

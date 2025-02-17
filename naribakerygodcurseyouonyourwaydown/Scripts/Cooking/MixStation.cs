@@ -38,7 +38,7 @@ public abstract partial class MixStation : PrepStation {
     }
 
     protected RecipieR FindBestRecipie() {
-        foreach (RecipieR recipieR in Globals.Instance.CookingManager.GetAllRecipies) {
+        foreach (RecipieR recipieR in Globals.Instance.CookingManager.AllRecipies) {
             if (recipieR.HasAllIngredients(ingredientRs)) {
                 return recipieR;
             }
@@ -51,12 +51,15 @@ public abstract partial class MixStation : PrepStation {
         DespawnIngredients();
 
         PackedScene finalDish = badDish;
-        if (currRecipie is not null)
-            finalDish = currRecipie.GetFinalDishScene;
+        if (currRecipie is not null && CanSpawnDish(currRecipie))
+            finalDish = currRecipie.FinalDishScene;
         spawnedIngredients.Add(SpawnNewIngredient(finalDish));
         finalDishSpawned = true;
     }
 
+    protected virtual bool CanSpawnDish(RecipieR recipie) {
+        return recipie.IsMixRecipie;
+    }
 
     protected void DespawnIngredients() {
         foreach (Ingredient ing in spawnedIngredients)

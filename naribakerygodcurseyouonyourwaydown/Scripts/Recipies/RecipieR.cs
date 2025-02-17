@@ -7,12 +7,11 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class RecipieR : Resource {
 
-    [Export] private string recipieName;
-    [Export] private Array<RecipieStep> recipieSteps = new();
-    [Export] private PackedScene finalDishScene;
+    [Export] public bool IsMixRecipie { get; private set; }
+    [Export] public string RecipieName { get; private set; }
+    [Export] public PackedScene FinalDishScene { get; private set; }
 
-    public PackedScene GetFinalDishScene { get => finalDishScene; }
-    public string GetRecipieName { get => recipieName; }
+    [Export] private Array<RecipieStep> recipieSteps = new();
 
     public bool HasAllIngredients(List<IngredientR> ingredients) {
         foreach (RecipieStep rs in recipieSteps)
