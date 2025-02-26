@@ -160,5 +160,6 @@ transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 
 
 [node name="CookingManager" type="Node3D" parent="."]
 script = ExtResource("1_418n8")
-allRecipies = Array[Object]([ExtResource("2_7d4xq"), ExtResource("3_gy3n8"), ExtResource("4_6bljc"), ExtResource("5_65egy")])
+AllRecipies = Array[Object]([ExtResource("3_gy3n8"), ExtResource("2_7d4xq"), ExtResource("4_6bljc"), ExtResource("5_65egy")])
 maxNumRecipies = 3
+metadata/_edit_lock_ = true

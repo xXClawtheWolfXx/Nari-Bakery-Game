@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2f01uwmw2piu"]
+[gd_scene load_steps=14 format=3 uid="uid://c2f01uwmw2piu"]
 
 [ext_resource type="PackedScene" uid="uid://c6xmgtjv710l4" path="res://Scenes/Stations/station.tscn" id="1_yuj38"]
 [ext_resource type="Script" path="res://Scripts/Cooking/OvenStation.cs" id="2_k2lq8"]
@@ -17,6 +17,17 @@ size = Vector3(1.5, 1, 1.5)
 [sub_resource type="QuadMesh" id="QuadMesh_cshbj"]
 size = Vector2(1.46, 0.34)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_pjki1"]
+viewport_path = NodePath("SubViewportPB")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afr8i"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_pjki1")
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_gh8rd"]
+size = Vector2(1.4, 1.4)
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_da3ba"]
 viewport_path = NodePath("SubViewportCT")
 
@@ -24,9 +35,6 @@ viewport_path = NodePath("SubViewportCT")
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_da3ba")
 billboard_mode = 2
-
-[sub_resource type="QuadMesh" id="QuadMesh_gh8rd"]
-size = Vector2(1.4, 1.4)
 
 [node name="OvenStation" node_paths=PackedStringArray("progressUI", "progressBar", "mesh", "ingredientSpawnPosition") instance=ExtResource("1_yuj38")]
 script = ExtResource("2_k2lq8")
@@ -52,10 +60,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40073, 0)
 visible = false
 mesh = SubResource("QuadMesh_cshbj")
-surface_material_override/0 = SubResource("StandardMaterial3D_xkghg")
+surface_material_override/0 = SubResource("StandardMaterial3D_afr8i")
 
 [node name="CookTutorialUI" type="MeshInstance3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40073, 0)
+visible = false
 mesh = SubResource("QuadMesh_gh8rd")
 surface_material_override/0 = SubResource("StandardMaterial3D_xkghg")
 
